@@ -10,7 +10,7 @@ For the analysis we are using 2 data sources:
 
 ### Data Descriptions
 
-*The Wikipedia Dataset*
+*The politician Dataset*
 
 | Column | Description |
 | ------ | ----------- |
@@ -91,21 +91,30 @@ A sample response from ORES looks like this:
 
 ## Output files
 
-`wp_countries-no_match.txt` - This file contains the names of the politicians for which no response was found
+`wp_countries-no_match.txt` - This file contains the names of the politicians for which no response was found.
 
-`wp_politicians_by_country.csv` -This file contains the name of the politicians ('article title') with 'country','region','population','revision_id' and 	'article_quality'
+`wp_politicians_by_country.csv` -This file contains the name of the politicians ('article title') with 'country','region','population','revision_id' and 	'article_quality' for which respone was found
 
-License
-This assignment code is released under the MIT License.
-The Wikipedia English language articles data source is released under the CC-BY-SA 4.0 license.
-The population data is released under the ??? license.
-Writeup
+## License
+- This assignment code is released under the MIT License.
+- The Wikipedia English language articles data source is released under the CC-BY-SA 4.0 license.
+- The population data is released under the ??? license.
+
+
+## Research Implications
+
+### Special Considerations
+
+1. The population dataset contained name of both countries and regions in the Geography column. The population against the regions were the sum of population of all the countries preceded by it. So a data cleaning operation was performed to keep only countries name in the Geography columns and mapped the corresponding regions against it with the lowest hierarchy.
+2. In the politician datasets, there were duplicate rows which were removed but the duplicates based on name and country were retained so that they can be used to calculate articles per capita.
+3. Since, the population is in millions, there were countries which may have low populations due to which population in millions is 0. This turned out problematic when ratios were calculated.
+
 What I Learned
-Documentation and Reproducibility Are Hard
-I often find myself complaining about how most open-source projects that I use (or try to) have scarce levels of documentation, and that they are hardly understandable, let alone reproducible. I now realize how hard it is to provide just enough information for someone else to have all the context that I have in order to replicate my work. When I put on my "new person to this repo" hat, I find my own work rife with holes and gaps. It is commendable that projects that are more complex by several orders of magnitude are adopted so heavily, and that the community drives the quality of the repository.
+Reproducibility is hard
+In my own code, I faced problems when I was trying to re-run a snippet. There were different errors everytime I was re-running. Also, when I was calling the API between different days, I was surprised to see that some pages gets deleted the next day which also impacted few of my figures. 
 
-Accuracy is not the End Goal
-For the short period of four years that I have been dabbling in machine learning, I have always considered a numeric metric to be the goal; 99% is always better than 95%. This assignment has taught me that critically analyzing the algorithm at hand, investigating the sources of bias, and providing context to the results are equally, if not more, important. I relate back to the phrase "the numbers speak for themselves", and think to myself "Well I can change that."
+Results may be biased
+Since , the data is crawled from the wikipedia website and even if several preprocessing had been done to get a cleaner data , there is still a chance that some articles may not have been successfully crawled which could lead to wrong interpretation of the results. More details on how the data was captured could validate my hypothesis. Also, there is a chance of linguistic bias in the data
 
 What I Suspected (and Validated)
 An obvious but important thing to note is that the source of these data is from the English Wikipedia pages. One might already suspect a bias in article quality due to this; articles about local politicians might be far richer in pages in their native language, than in English. Alternatively, if certain languages are not supported by Wikipedia, then pages relating to those countries, regardless of category, can be expected to be poorer in quality.
