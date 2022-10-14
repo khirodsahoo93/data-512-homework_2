@@ -109,19 +109,24 @@ A sample response from ORES looks like this:
 2. In the politician datasets, there were duplicate rows which were removed but the duplicates based on name and country were retained so that they can be used to calculate articles per capita.
 3. Since, the population is in millions, there were countries which may have low populations due to which population in millions is 0. This turned out problematic when ratios were calculated.
 
-What I Learned
-Reproducibility is hard
+What I Learned ?
+
+- Reproducibility is hard
+
 In my own code, I faced problems when I was trying to re-run a snippet. There were different errors everytime I was re-running. Also, when I was calling the API between different days, I was surprised to see that some pages gets deleted the next day which also impacted few of my figures. 
 
-Results may be biased
-Since , the data is crawled from the wikipedia website and even if several preprocessing had been done to get a cleaner data , there is still a chance that some articles may not have been successfully crawled which could lead to wrong interpretation of the results. More details on how the data was captured could validate my hypothesis. Also, there is a chance of linguistic bias in the data
+- Results may be biased
 
-What I Suspected (and Validated)
-An obvious but important thing to note is that the source of these data is from the English Wikipedia pages. One might already suspect a bias in article quality due to this; articles about local politicians might be far richer in pages in their native language, than in English. Alternatively, if certain languages are not supported by Wikipedia, then pages relating to those countries, regardless of category, can be expected to be poorer in quality.
-With the metric that we are trying to measure, the population might be a stronger factor than the number of articles for that country. The number of articles vary from 1 to a few thousand (max-min ratio of 103), whereas the population varies from 104 to 109 (max-min ratio of 105). This, in my opinion, is a biased metric to measure; a country with twice the population does not necessarily have twice the number of politicians, let alone pages about them.
-What I Found
-As suspected, the highest ranked countries for the total number of articles per population overlap strongly with the least populated countries (8 out of 10 in the former are in the latter).
-From the ORES Wiki:
-The wp10 model bases its predictions on structural characteristics of the article. E.g. How many sections are there? Is there an infobox? How many references? And do the references use a {{cite}} template? The wp10 model doesn't evaluate the quality of the writing or whether or not there's a tone problem (e.g. a point of view being pushed). However, many of the structural characteristics of articles seem to correlate strongly with good writing and tone, so the models work very well in practice.
+Since , the data is crawled from the wikipedia website and even if several preprocessing had been done to get a cleaner data , there is still a chance that some articles may not have been successfully crawled which could lead to wrong interpretation of the results. More details on how the data was captured could validate my hypothesis. Also, there is a chance of linguistic bias in the data as few non-english speaking nations may be educated but their english may be slightly different leading to scoring low for those articles. 
 
-The way the ORES model evaluates the quality of the article itself appears to be biased towards the structure of the article than the content. In contrast, the original WP10 article assessment performed by humans has very strongly worded and thoughtful criteria to attain a certain quality level.
+What biases did you expect to find in the data (before you started working with it), and why? 
+
+- I expected to see the developed nations to have high coverage as compared to underdeveloped nation as I assumed that developed nations would have higher literacy rate and hence would have more number of articles.
+
+Can you think of a realistic data science research situation where using these data (to train a model, perform a hypothesis-driven research, or make business decisions) might create biased or misleading results, due to the inherent gaps and limitations of the data?
+
+- The exit poll survey that is often used to predict election results has biases because the survey responders could only be the people who are willing to participate. Also, the survey may done on regions which may not be the right representative of the entire population who are going to vote.
+
+How might a researcher supplement or transform this dataset to potentially correct for the limitations/biases you observed? 
+
+- For one instance, the researcher can include english speaking population numbers in each country. So that the articles per capita can be calculated based on english speaking population instead of total population to give a fair comparison
