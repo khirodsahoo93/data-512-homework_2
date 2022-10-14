@@ -105,7 +105,7 @@ A sample response from ORES looks like this:
 
 ### Special Considerations
 
-1. The population dataset contained name of both countries and regions in the Geography column. The population against the regions were the sum of population of all the countries preceded by it. So a data cleaning operation was performed to keep only countries name in the Geography columns and mapped the corresponding regions against it with the lowest hierarchy.
+1. The population dataset contained name of both countries and regions in the Geography column. The population against the regions were the sum of population of all the countries preceded by it. So a data cleaning operation was performed to keep only countries name in the Geography columns and mapped the corresponding regions against them with the lowest hierarchy.
 2. In the politician datasets, there were duplicate rows which were removed but the duplicates based on name and country were retained so that they can be used to calculate articles per capita.
 3. Since, the population is in millions, there were countries which may have low populations due to which population in millions is 0. This turned out problematic when ratios were calculated.
 
