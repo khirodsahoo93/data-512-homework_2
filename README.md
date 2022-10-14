@@ -5,8 +5,8 @@ The goal of this project is investigate bias in the article quality score of var
 ## Data Sources Used
 For the analysis we are using 2 data sources:
 
-- The Wikipedia English Article Dataset - contains list of article names , regions and their urls
-- Population Data by Country - contains list of countries, their region and population
+- `The Wikipedia English Article Dataset` - contains list of article names , regions and their urls
+- `Population Data by Country` - contains list of countries, their region and population
 
 ### Data Descriptions
 
