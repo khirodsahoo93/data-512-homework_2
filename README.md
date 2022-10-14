@@ -98,7 +98,6 @@ A sample response from ORES looks like this:
 ## License
 - This assignment code is released under the MIT License.
 - The Wikipedia English language articles data source is released under the CC-BY-SA 4.0 license.
-- The population data is released under the ??? license.
 
 
 ## Research Implications
